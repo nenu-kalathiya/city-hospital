@@ -2,8 +2,8 @@ import React from 'react';
 
 function About(props) {
     return (
-        <div>
-            <main id="main" />
+        // <div>
+            // <main id="main" />
             <section id="about" className="about">
                 <div className="container">
                     <div className="row">
@@ -19,7 +19,7 @@ function About(props) {
                     </div>
                 </div>
             </section>
-        </div>
+        // </div>
 
     );
 }

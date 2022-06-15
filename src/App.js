@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './component/header/Header';
+import Auth from './container/Auth/Auth';
 import Home from './container/home/Home';
 import Department from './container/Department/Department';
 import Doctor from './container/Doctor/Doctor';
@@ -15,12 +16,12 @@ function App() {
       <Header />
       <Switch>
         <Route path={"/"} exact component={Home}></Route>
-        <Route path="/Department" exact component={Department}></Route>
-        <Route path="/Doctor" exact component={Doctor}></Route>
-        <Route path="/About" exact component={About}></Route>
-        <Route path="/Contact" exact component={Contact}></Route>
+        <Route path={"/Auth"} exact component={Auth}></Route>
+        <Route path={"/Department"} exact component={Department}></Route>
+        <Route path={"/Doctor"} exact component={Doctor}></Route>
+        <Route path={"/About"} exact component={About}></Route>
+        <Route path={"/Contact"} exact component={Contact}></Route>
       </Switch>
-      <Home />
       <Footer />
     </div>
   );
