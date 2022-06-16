@@ -5,6 +5,7 @@ import Auth from './container/Auth/Auth';
 import Home from './container/home/Home';
 import Department from './container/Department/Department';
 import Doctor from './container/Doctor/Doctor';
+import Form from './container/Form/Form';
 import About from './container/About/About';
 import Contact from './container/Contact/Contact';
 import Footer from './component/footer/Footer';
@@ -23,6 +24,8 @@ function App() {
         <Route path={"/About"} exact component={About}></Route>
         <Route path={"/Contact"} exact component={Contact}></Route>
         <Route path={"/Medicine"} exact component={Medicine}></Route>
+        <Route path={"/Form"} exact component={Form}></Route>
+
       </Switch>
       <Footer />
     </div>

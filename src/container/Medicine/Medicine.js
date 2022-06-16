@@ -40,8 +40,13 @@ function Medicine(props) {
         expiry: 2021
         },
         ]
+
+    const getId = (id) => {
+        console.log(id);
+    }
     return (
         <List
+            getProps={getId}
             Data={orgData}
         />
     );

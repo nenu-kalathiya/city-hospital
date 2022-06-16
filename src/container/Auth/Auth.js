@@ -64,7 +64,7 @@ function Auth(props) {
                             user === 'login' ?
                                 <>
                                     <p className='d-inline-block me-2 mt-3'>Create New Account</p><button onClick={() => setUser('Signup')}>Sign Up</button>
-                                    <button className='ms-2' onClick={() => setReset(true)}>Forgot Password ?</button>
+                                    <a className='d-block' onClick={() => setReset(true)}>Forgot Password ?</a>
                                 </>
                                 :
                                 <>
@@ -89,7 +89,7 @@ function Auth(props) {
                     </div>
                 </div>
             </div>
-        </section>
+        </section> 
 
     );
 }
