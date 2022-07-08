@@ -49,6 +49,7 @@ function Auth(props) {
         validationSchema : schema,
         onSubmit: values => {
             insertData(values);
+            
         },
 
         enableReinitialize : true,
