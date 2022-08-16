@@ -26,7 +26,7 @@ function Auth(props) {
         init = {
             name: '',
             email: '',
-            password: ''
+            password: ''        
         }
     }
 
@@ -44,12 +44,21 @@ function Auth(props) {
         }
     }
 
+    const handleLogin = () => {
+        localStorage.setItem('user' , '123')
+    }
+
+    const dispatch = useDispatch()
     const formikobj = useFormik({
         initialValues: init,
         validationSchema : schema,
         onSubmit: values => {
-            insertData(values);
-            
+            if (user === 'login') {
+                handleLogin()
+            } else {
+                insertData(values);
+            }
+            dispatch(signUpAction(values))
         },
 
         enableReinitialize : true,
@@ -68,7 +77,7 @@ function Auth(props) {
                             :
                             user === 'login' ?
                                 <h2>Login</h2>
-                                :
+                                :           
                                 <h2>Sign Up</h2>
                     }
 
