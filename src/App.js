@@ -13,25 +13,31 @@ import Medicine from './container/Medicine/Medicine';
 import BookAppointment from './container/Appoinment/BookAppointment';
 import { Route, Switch } from 'react-router-dom';
 import ListAppointment from './container/Appoinment/ListAppointment';
+import PublicRoute from './Route/PublicRoute';
+import PrivateRoute from './Route/PrivateRoute';
+import ToggleThemeContext from './context/ThemeContext';
+import ToggleProvider from './context/ThemeContext';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Switch>
-        <Route path={"/"} exact component={Home}></Route>
-        <Route path={"/Auth"} exact component={Auth}></Route>
-        <Route path={"/Department"} exact component={Department}></Route>
-        <Route path={"/Doctor"} exact component={Doctor}></Route>
-        <Route path={"/About"} exact component={About}></Route>
-        <Route path={"/Contact"} exact component={Contact}></Route>
-        <Route path={"/Medicine"} exact component={Medicine}></Route>
-        <Route path={"/book_apt"} exact component={BookAppointment}></Route>
-        <Route path={"/list_apt"} exact component={ListAppointment}></Route>
-        <Route path={"/Form"} exact component={Form}></Route>
-
-      </Switch>
-      <Footer />
+      <ToggleProvider
+      >
+        <Header />
+        <Switch>
+          <PublicRoute path={"/"} exact component={Home}></PublicRoute>
+          <PublicRoute path={"/Auth"} restricted={true} exact component={Auth}></PublicRoute>
+          <PublicRoute path={"/Department"} exact component={Department}></PublicRoute>
+          <PublicRoute path={"/Doctor"} exact component={Doctor}></PublicRoute>
+          <PublicRoute path={"/About"} exact component={About}></PublicRoute>
+          <PublicRoute path={"/Contact"} exact component={Contact}></PublicRoute>
+          <PublicRoute path={"/Medicine"} exact component={Medicine}></PublicRoute>
+          <PrivateRoute path={"/book_apt"} exact component={BookAppointment}></PrivateRoute>
+          <PrivateRoute path={"/list_apt"} exact component={ListAppointment}></PrivateRoute>
+          <Route path={"/Form"} exact component={Form}></Route>
+        </Switch>
+        <Footer />
+      </ToggleProvider>
     </div>
   );
 }
