@@ -17,12 +17,14 @@ import PublicRoute from './Route/PublicRoute';
 import PrivateRoute from './Route/PrivateRoute';
 import ToggleThemeContext from './context/ThemeContext';
 import ToggleProvider from './context/ThemeContext';
+import { Provider } from "react-redux";
+import { store } from './Redux/Store';
 
 function App() {
   return (
     <div className="App">
-      <ToggleProvider
-      >
+      <Provider store={store}>
+      <ToggleProvider>
         <Header />
         <Switch>
           <PublicRoute path={"/"} exact component={Home}></PublicRoute>
@@ -38,6 +40,7 @@ function App() {
         </Switch>
         <Footer />
       </ToggleProvider>
+      </Provider>
     </div>
   );
 }

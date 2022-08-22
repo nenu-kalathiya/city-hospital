@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
 import { useFormik, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { signUpAction } from '../../Redux/action/AuthAction';
 
 function Auth(props) {
     const [user, setUser] = useState('login');
