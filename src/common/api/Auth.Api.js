@@ -40,9 +40,9 @@ export const signInApi = (data) => {
         .then((userCredential) => {
             const user = userCredential.user;
             if (user.emailVerified) {
-                console.log("asdfghjkl");
+                resolve({ payload: "Check Your E-mail" });
             } else {
-                console.log("error");
+                reject("error")
             }
         })
         .catch((error) => {
