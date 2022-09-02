@@ -34,21 +34,21 @@ function Auth(props) {
 
     let schema = yup.object().shape(schemaobj);
 
-    const insertData = (values) => {
-        let LocalData = JSON.parse(localStorage.getItem('user'));
-        console.log(values);
+    // const insertData = (values) => {
+    //     let LocalData = JSON.parse(localStorage.getItem('user'));
+    //     console.log(values);
 
-        if (LocalData === null) {
-            localStorage.setItem("user" , JSON.stringify(values));
-        } else {
-            LocalData.push(values);
-            localStorage.setItem("user" , JSON.stringify([LocalData]));
-        }
-    }
+    //     if (LocalData === null) {
+    //         localStorage.setItem("user" , JSON.stringify(values));
+    //     } else {
+    //         LocalData.push(values);
+    //         localStorage.setItem("user" , JSON.stringify([LocalData]));
+    //     }
+    // }
 
-    const handleLogin = () => {
-        localStorage.setItem('user' , '123')
-    }
+    // const handleLogin = () => {
+    //     localStorage.setItem('user' , '123')
+    // }
 
     const dispatch = useDispatch()
     const formikobj = useFormik({
@@ -56,17 +56,18 @@ function Auth(props) {
         validationSchema : schema,
         onSubmit: values => {
             if (user === 'login') {
-                handleLogin()
+                dispatch(signInAction(values))
             } else {
-                insertData(values);
+                dispatch(signUpAction(values))
             }
-            dispatch(signUpAction(values))
-            dispatch(signInAction(values))
         },
-
         enableReinitialize : true,
     });
 
+    const handleGoogleSignIn = () => {
+        dispatch()
+    }
+ 
     const { handleChange, errors, handleSubmit, handleBlur, touched } = formikobj
 
     return (
@@ -159,6 +160,8 @@ function Auth(props) {
                                         :
                                         <button type='submit'>Submit</button>
                             }
+                            <h4>OR</h4>
+                            <button onClick={() => handleGoogleSignIn()}>Sign In With Google</button>
                         </div>
                     </Form>
                 </Formik>

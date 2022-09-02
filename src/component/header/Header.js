@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
+import Alert from '../Alert/Alert';
 
 function Header(props) {
     const value = useContext(ThemeContext);
@@ -16,6 +17,7 @@ function Header(props) {
                     <button onClick={() => value.toggle_theme(value.theme)}>
                         Theme Change
                     </button>
+                    <Alert />
                     <div className="d-none d-lg-flex social-links align-items-center">
                         <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
                         <a href="#" className="facebook"><i className="bi bi-facebook" /></a>

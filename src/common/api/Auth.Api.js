@@ -1,5 +1,6 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged,  sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../FireBase/Firebase";
+import { GoogleAuthProvider } from "firebase/auth";
 
 export const signUpApi = (data) => {
     console.log("signUpApi", data);
@@ -26,36 +27,36 @@ export const signUpApi = (data) => {
                 } else {
                     reject({ payload: errorMessage });
                 }
-                // console.log(""errorCode,errorMessage);
             });
-
     })
 }
 
 export const signInApi = (data) => {
-    console.log("signInApi", data);
-
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
         signInWithEmailAndPassword(auth, data.email, data.password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            if (user.emailVerified) {
-                resolve({ payload: "Check Your E-mail" });
-            } else {
-                reject("error")
-            }
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
+            .then((userCredential) => {
+                const user = userCredential.user;
+                if (user.emailVerified) {
+                    resolve({ payload: user });
+                } else {
+                    reject({ payload: "error" })
+                }
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
 
-            if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
-                resolve({ payload: "E-mail Or Password Is Wrong" });
-            } else {
-                reject({ payload: errorMessage });
-            }
-        });
+                if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
+                    reject({ payload: "You Are Login Successfully" });
+                } else {
+                    reject({ payload: errorMessage });
+                }
+            });
     })
-    
+}
 
+export const googleSignInApi = () => {
+    return new Promise((resolve, reject) => {
+        const provider = new GoogleAuthProvider();
+    })
 }

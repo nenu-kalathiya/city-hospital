@@ -7,3 +7,7 @@ export const signUpAction = (values) => (dispatch) => {
 export const signInAction = (values) => (dispatch) => {
     dispatch({type: ActionTypes.SIGNIN_USER, payload:values})
 }
+
+export const googleSignInAction = () => (dispatch) => {
+    dispatch({type: ActionTypes.GOOGLE_SIGNIN_ACTION})
+}
